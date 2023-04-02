@@ -1,45 +1,51 @@
-﻿namespace Ex01_03
+namespace Ex01_03
 {
     public class Program
     {
         public static void Main()
         {
             System.Console.WriteLine("Please select the height of the diamond: ");
-            string outputNumber = readNumber();
-            makeDiamond(outputNumber);
+            string outputNumber = ReadNumber();
+            MakeDiamond(outputNumber);
         }
 
-        public static void makeDiamond(string i_output)
+        public static void MakeDiamond(string i_output)
         {
             int diamondHeight = int.Parse(i_output);
+
             if (diamondHeight % 2 == 0)
             {
                 diamondHeight--;
             }
-            Ex01_02.Program.upperPartOfDiamond(diamondHeight, 0);
-            Ex01_02.Program.lowerPartOfDiamond(diamondHeight, 1);
+
+            Ex01_02.Program.UpperPartOfDiamond(diamondHeight, 0);
+            Ex01_02.Program.LowerPartOfDiamond(diamondHeight, 1);
         }
 
-        public static string readNumber()
+        public static string ReadNumber()
         {
             string outputNumber = System.Console.ReadLine();
-            while (!checkValidity(outputNumber))
+
+            while (!CheckValidity(outputNumber))
             {
                 System.Console.WriteLine("The number is invalid! try again:");
                 outputNumber = System.Console.ReadLine();
-                if (checkValidity(outputNumber))
+                if (CheckValidity(outputNumber))
                     continue;
             }
+
             return outputNumber;
         }
 
-        public static bool checkValidity(string i_binaryNum)
+        public static bool CheckValidity(string i_binaryNum)
         {
             bool valid = true;
+
             if (i_binaryNum.Length <= 0)
             {
                 valid = false;
             }
+
             return valid;
         }
     }
