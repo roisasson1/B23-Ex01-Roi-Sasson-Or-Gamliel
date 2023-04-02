@@ -21,26 +21,28 @@ namespace Ex01_05
                 System.Console.WriteLine("The number is invalid! try again:");
                 userStr = System.Console.ReadLine();
             }
+
             return userStr;
         }
         public static bool IsValid(string i_str)
         {
             bool isNumber = i_str.All(char.IsDigit);
             bool valid = (isNumber && i_str.Length == 6);
+
             return valid;
         }
 
         public static string MessageToScreen(string i_str)
         {
             return string.Format(
-$@"The number of digits greater than the units digit is: {numOfDigitsGreaterThanUnitsDigit(i_str)}.
-The smallest digit is: {smallestDigit(i_str)}.
-The number of digits which are divided by 3 is: {numOfDigitsDividedByThree(i_str)}.
-The average of the digits in the number is: {avgOfDigits(i_str)}."
+$@"The number of digits greater than the units digit is: {FindNumOfDigitsGreaterThanUnitsDigit(i_str)}.
+The smallest digit is: {FindSmallestDigit(i_str)}.
+The number of digits which are divided by 3 is: {FindNumOfDigitsDividedByThree(i_str)}.
+The average of the digits in the number is: {FindAvgOfDigits(i_str)}."
             );
         }
 
-        public static int numOfDigitsGreaterThanUnitsDigit(string i_str)
+        public static int FindNumOfDigitsGreaterThanUnitsDigit(string i_str)
         {
             int unitsDigit = i_str[i_str.Length - 1] - '0';
             int countDigits = 0;
@@ -51,10 +53,11 @@ The average of the digits in the number is: {avgOfDigits(i_str)}."
                     countDigits++;
                 }
             }
+
             return countDigits;
         }
 
-        public static int smallestDigit(string i_str)
+        public static int FindSmallestDigit(string i_str)
         {
             int minDigit = i_str[0] - '0';
             foreach (char digit in i_str)
@@ -64,10 +67,11 @@ The average of the digits in the number is: {avgOfDigits(i_str)}."
                     minDigit = digit - '0';
                 }
             }
+
             return minDigit;
         }
 
-        public static int numOfDigitsDividedByThree(string i_str)
+        public static int FindNumOfDigitsDividedByThree(string i_str)
         {
 
             int countDigits = 0;
@@ -78,16 +82,18 @@ The average of the digits in the number is: {avgOfDigits(i_str)}."
                     countDigits++;
                 }
             }
+
             return countDigits;
         }
 
-        public static float avgOfDigits(string i_str)
+        public static float FindAvgOfDigits(string i_str)
         {
             float sumDigits = 0;
             foreach (char digit in i_str)
             {
                 sumDigits += (digit - '0');
             }
+
             return sumDigits / i_str.Length;
         }
     }
