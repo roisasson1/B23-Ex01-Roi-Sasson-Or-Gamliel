@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 
 namespace Ex01_05
@@ -25,13 +25,8 @@ namespace Ex01_05
         }
         public static bool IsValid(string i_str)
         {
-            bool valid = false;
             bool isNumber = i_str.All(char.IsDigit);
-
-            if (isNumber && i_str.Length == 6)
-            {
-                valid = true;
-            }
+            bool valid = (isNumber && i_str.Length == 6);
             return valid;
         }
 
