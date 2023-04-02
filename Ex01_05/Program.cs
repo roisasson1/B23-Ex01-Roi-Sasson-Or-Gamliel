@@ -24,6 +24,7 @@ namespace Ex01_05
 
             return userStr;
         }
+        
         public static bool IsValid(string i_str)
         {
             bool isNumber = i_str.All(char.IsDigit);
