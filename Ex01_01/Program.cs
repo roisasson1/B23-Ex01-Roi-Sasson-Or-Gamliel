@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 public class Program
 {
     public static void Main()
@@ -14,7 +14,7 @@ public class Program
         int firstDecimalNum = 0;
         int secondDecimalNum = 0;
         int thirdDecimalNum = 0;
-        int maxNumOfZeros = 24;
+        int numOfAllDigits = 24;
         float sumOfZeros = 0;
         float sumOfOnes;
         int dividedByFour = 0;
@@ -47,45 +47,50 @@ public class Program
             {
                 dividedByFour++;
             }
+
             if (IsDecreasingSet(decimalNum))
             {
                 decreasingSet++;
             }
-            if (IsPalindrome(decimalNum))
+
+            if (IsPalindrom(decimalNum))
             {
                 palindrom++;
             }
         }
-        sumOfOnes = maxNumOfZeros - sumOfZeros;
 
+        sumOfOnes = numOfAllDigits - sumOfZeros;
         PrintInDescendingOrder(firstDecimalNum, secondDecimalNum, thirdDecimalNum);
-
         float avgOfZeros = sumOfZeros / 3;
         float avgOfOnes = sumOfOnes / 3;
+
         return MessageToScreen(avgOfZeros, avgOfOnes, dividedByFour, decreasingSet, palindrom);
     }
 
-    public static void PrintInDescendingOrder(int i_firstDecimalNum, int i_secondDecimalNum, int i_thirdDecimalNum)
+    public static void PrintInDescendingOrder(int i_firstDecimalNum, int i_decNum2, int i_decNum3)
     {
-        if (i_firstDecimalNum < i_secondDecimalNum)
+        if (i_firstDecimalNum < i_decNum2)
         {
             int temp = i_firstDecimalNum;
-            i_firstDecimalNum = i_secondDecimalNum;
-            i_secondDecimalNum = temp;
+            i_firstDecimalNum = i_decNum2;
+            i_decNum2 = temp;
         }
-        if (i_secondDecimalNum < i_thirdDecimalNum)
+
+        if (i_decNum2 < i_decNum3)
         {
-            int temp = i_secondDecimalNum;
-            i_secondDecimalNum = i_thirdDecimalNum;
-            i_thirdDecimalNum = temp;
+            int temp = i_decNum2;
+            i_decNum2 = i_decNum3;
+            i_decNum3 = temp;
         }
-        if (i_firstDecimalNum < i_secondDecimalNum)
+
+        if (i_firstDecimalNum < i_decNum2)
         {
             int temp = i_firstDecimalNum;
-            i_firstDecimalNum = i_secondDecimalNum;
-            i_secondDecimalNum = temp;
+            i_firstDecimalNum = i_decNum2;
+            i_decNum2 = temp;
         }
-        Console.WriteLine("{0}, {1}, {2}", i_firstDecimalNum, i_secondDecimalNum, i_thirdDecimalNum);
+
+        Console.WriteLine("{0}, {1}, {2}", i_firstDecimalNum, i_decNum2, i_decNum3);
     }
 
     public static string ReadBinaryNumber()
@@ -104,6 +109,7 @@ public class Program
                 binaryNum = System.Console.ReadLine();
             }
         }
+
         return binaryNum;
     }
 
@@ -113,17 +119,22 @@ public class Program
         {
             return false;
         }
+
         for (int i = 0; i < 8; i++)
         {
             if (i_binaryNum[i] != '0' && i_binaryNum[i] != '1')
+            {
                 return false;
+            }
         }
+
         return true;
     }
 
     public static int ConvertBinaryToDecimal(string i_BinaryNumber)
     {
         int decimalNumber = 0;
+
         for (int i = i_BinaryNumber.Length - 1; i >= 0; i--)
         {
             if (i_BinaryNumber[i] == '1')
@@ -131,12 +142,14 @@ public class Program
                 decimalNumber += System.Convert.ToInt16(System.Math.Pow(2, i_BinaryNumber.Length - i - 1) * (i_BinaryNumber[i] - '0'));
             }
         }
+
         return decimalNumber;
     }
 
     public static int FindNumOfZeros(string i_number)
     {
         int sumOfZeros = 0;
+
         for (int i = i_number.Length - 1; i >= 0; i--)
         {
             if (i_number[i] == '0')
@@ -144,15 +157,18 @@ public class Program
                 sumOfZeros++;
             }
         }
+
         return sumOfZeros;
     }
     public static bool IsDividedByFour(int i_decimalNumber)
     {
         bool dividedByFour = false;
+
         if (i_decimalNumber % 4 == 0)
         {
             dividedByFour = true;
         }
+
         return dividedByFour;
     }
 
@@ -160,6 +176,7 @@ public class Program
     {
         bool decreasingSet = true;
         string decimalNumberAsString = i_decimalNumber.ToString();
+
         for (int i = 0; i < decimalNumberAsString.Length - 1; i++)
         {
             if (decimalNumberAsString[i] <= decimalNumberAsString[i + 1])
@@ -168,14 +185,16 @@ public class Program
                 break;
             }
         }
+
         return decreasingSet;
     }
 
-    public static bool IsPalindrome(int i_decimalNumber)
+    public static bool IsPalindrom(int i_decimalNumber)
     {
         bool palindrom = true;
         string decimalNumberAsString = i_decimalNumber.ToString();
         int length = decimalNumberAsString.Length;
+
         for (int i = 0; i < length / 2; i++)
         {
             if (decimalNumberAsString[i] != decimalNumberAsString[length - i - 1])
@@ -184,6 +203,7 @@ public class Program
                 break;
             }
         }
+
         return palindrom;
     }
 
