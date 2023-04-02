@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Text;
 
@@ -14,7 +14,7 @@ class Program
         Console.WriteLine("Hello, please enter a 6 character string:");
         string userStr = ReadStrFromUser(out bool isANumber);
         StringBuilder message = new StringBuilder();
-        message.AppendLine($"The string is {(IsPalindrome(userStr) ? "" : "not ")}a palindrome.");
+        message.AppendLine($"The string is {(IsPalindrome(userStr) ? "" : "not ")}a palindrom.");
         if (isANumber)
         {
             message.AppendLine($"The number is {(IsDividedBy3(userStr) ? "" : "not ")}divided by 3.");
@@ -73,16 +73,9 @@ class Program
     }
     public static bool IsValid(string i_str, out bool io_isNumber)
     {
-        bool valid = false;
         io_isNumber = i_str.All(char.IsDigit);
         bool isAllLetters = i_str.All(char.IsLetter);
-
-        valid = ((io_isNumber || isAllLetters) && i_str.Length == 6);
-
-        /*if ((io_isNumber || isAllLetters) && i_str.Length == 6)
-        {
-            valid = true;
-        }*/
+        bool valid = ((io_isNumber || isAllLetters) && i_str.Length == 6);
         return valid;
     }
 }
